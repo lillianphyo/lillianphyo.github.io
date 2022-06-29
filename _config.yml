@@ -23,10 +23,11 @@ timezone: Asia/Yangon
 
 title: Lillian                          # the main title
 
-tagline: Happy-go-lucky, stubborn optimist   # it will display as the sub-title
+tagline: Happy-go-lucky, stubborn optimist! computer science deep-rooting learner  # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
+  computer science deep-rooting learner!
+  #  A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://lillianphyo.github.io'
@@ -89,7 +90,7 @@ avatar: 'https://avatars.githubusercontent.com/u/19262583?v=4'
 toc: true
 
 comments:
-  active:         # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
+  active: giscus         # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
   # The active options are as follows:
   disqus:
     shortname:    # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
@@ -99,10 +100,10 @@ comments:
     issue_term:   # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
-    repo:             # <gh-username>/<repo>
-    repo_id:
-    category:
-    category_id:
+    repo: lillianphyo/lillianphyo.github.io  # <gh-username>/<repo>
+    repo_id: R_kgDOHXR7RA
+    category: General
+    category_id: DIC_kwDOHXR7RM4CP8Fa
     mapping:          # optional, default to 'pathname'
     input_position:   # optional, default to 'bottom'
     lang:             # optional, default to the value of `site.lang`
