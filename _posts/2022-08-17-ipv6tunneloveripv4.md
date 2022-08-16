@@ -19,7 +19,7 @@ Today, I gonna to setup ipv6 recability to my public server. Although It's fine 
 
 ## Creating the tunnel
 
-First things, I need to register here ['www.tunnelbroker.net']("www.tunnelbroker.net"). They ask some basic contact information Full name, street address, phone and email address. After that, they will sent initial password to confirm your email address. Login the website and change your own password something more secure. To create the tunnel , please visit here ['tunnelbroker.net']("https://www.tunnelbroker.net/new_tunnel.php"). Enter the public ipv4 address of your server and select the tunnel endpoint from bgp.he.net side with the lowest latency to the server.
+First things, I need to register here ['www.tunnelbroker.net']("https://www.tunnelbroker.net"). They ask some basic contact information Full name, street address, phone and email address. After that, they will sent initial password to confirm your email address. Login the website and change your own password something more secure. To create the tunnel , please visit here ['tunnelbroker.net']("https://www.tunnelbroker.net/new_tunnel.php"). Enter the public ipv4 address of your server and select the tunnel endpoint from bgp.he.net side with the lowest latency to the server.
 
 > Geographic distance is a good standard-in for network latency in general.
 {: .prompt-tip } 
@@ -110,7 +110,7 @@ method=manual
 ping6 google.com
 ```
 
-or can use this ['ipv6now.com.au']("http://www.ipv6now.com.au/pingme.php").
+or can use this ['ipv6now.com.au']("https://www.ipv6now.com.au/pingme.php").
 
 ## DNS IPv6 record
 
