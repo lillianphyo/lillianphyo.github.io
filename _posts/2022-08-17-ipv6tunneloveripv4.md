@@ -5,7 +5,7 @@ categories: [linux]
 tags: [networking]
 ---
 
-Today, I gonna to setup ipv6 recability to my public server. Although It's fine to set up ipv6 address in large ISP, it is difficult to establish ipv6 reachability in small ISP. I hope this will be help to fulfill ipv6 requirements for some software deployments. And this is how I found out luckly. 
+Today, I gonna to set up ipv6 reachability to my public server. Although It's fine to set up IPv6 address in large ISP, it is difficult to establish ipv6 reachability in small ISP. I hope this will help to fulfill ipv6 requirements for some software deployments. And this is how I found out luckily. 
 
 ### Task list
 
@@ -19,18 +19,18 @@ Today, I gonna to setup ipv6 recability to my public server. Although It's fine 
 
 ## Creating the tunnel
 
-First things, I need to register here [www.tunnelbroker.net](https://www.tunnelbroker.net). They ask some basic contact information Full name, street address, phone and email address. After that, they will sent initial password to confirm your email address. Login the website and change your own password something more secure. To create the tunnel , please visit here [tunnelbroker.net](https://www.tunnelbroker.net/new_tunnel.php). Enter the public ipv4 address of your server and select the tunnel endpoint from bgp.he.net side with the lowest latency to the server.
+First thing, I need to register here [www.tunnelbroker.net](https://www.tunnelbroker.net). They ask for some basic contact information Full name, street address, phone and email address. After that, they will be sent initial password to confirm your email address. Log in to the website and change your own password something more secure. To create the tunnel, please visit here [tunnelbroker.net](https://www.tunnelbroker.net/new_tunnel.php). Enter the public ipv4 address of your server and select the tunnel endpoint from bgp.he.net side with the lowest latency to the server.
 
 > Geographic distance is a good standard-in for network latency in general.
 {: .prompt-tip } 
 
 ![Desktop View](/posts//20220817/new_tunnel.png){: width="972" height="589" }
 
-It will bring you to tunnel details page when click "create tunnel" button.
+It will bring you to the tunnel details page when click the "create tunnel" button.
 
 ![Desktop View](/posts//20220817/tunnel_details.png){: width="972" height="589" }
 
-As my understanding in a table is as follow.
+My understanding in a table is as follows.
 
 | IPv6 Tunnel Endpoints Info   |                                                                                             |
 |:-----------------------------|:-------------------------------------------------------------------------------------------:|
@@ -38,13 +38,14 @@ As my understanding in a table is as follow.
 | Server IPv6 Address          | tunnel side ipv6 address from HE side endpoint router                                       |
 | Client IPv4 Address          | IPv4 address from local server                                                              |
 | Client IPv6 Address          | tunnel side IPv6 address for local server                                                   |
+
 | Routed IPv6 Prefixes         |                                                                                             |
 |:-----------------------------|:-------------------------------------------------------------------------------------------:|
 | Routed /64                   | IPv6 space to assign our local network. Future IPv6 routing for local server                |
 
-Server will serve as IPv6 Gateway in local network and sent IPv6 packets warpping along with IPv4 packets over tunnel through Server IPv4 Address destination. Routed /64 are routed back to HE's network in the region you requested. Then HE's router encapsulates in IPv4 and tunnels back to local server's IPv4 address. Server is responsible for decapsulation and routed back to local network. Server here acts as border router which is member of two different IPv6 network.
+Server will serve as IPv6 Gateway in local network and send IPv6 packets wrapping along with IPv4 packets over tunnel through Server IPv4 Address destination. Routed /64 are routed back to HE's network in the region you requested. Then HE's router encapsulates in IPv4 and tunnels back to local server's IPv4 address. Server is responsible for decapsulation and routed back to local network. Server here acts as border router which is member of two different IPv6 network.
 
-This is the requirements what I need to keen on for this lab:
+This is the requirements that I need to be keen on for this lab:
 1. Server IPv4 Address in lab is '216.218.221.42'
 2. Server IPv6 Address in lab is '2001:470.35.57a::1/64'
 3. Client IPv4 Address in lab is 'server's public IPv4 address'
@@ -69,7 +70,7 @@ IPV6_DNS_PRIORITY=100
 
 ## server to HE
 
-Don't need to worry about it. HE provide example configuraiton based on devices. Choose the device type and can get the required config as follow.
+Don't need to worry about it. HE provides example configuration based on devices. Choose the device type and can get the required config as follow.
 
 ![Desktop View](/posts//20220817/example_configuration.png){: width="972" height="589" }
 
@@ -133,7 +134,7 @@ www          IN  CNAME my-server
 my-server    IN  AAAA  2001:470:36:57b::1 ; here
 ```
 
-Please don't forget to reload the service to update record.
+Please don't forget to reload the service to update the record.
 ```bash
 sudo rndc reload example.com && sudo rndc notify example.com
 ```
@@ -154,5 +155,4 @@ $TTL    604800
 ```
 
 Thank You!
-
 
