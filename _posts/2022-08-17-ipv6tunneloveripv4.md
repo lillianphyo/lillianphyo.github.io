@@ -154,5 +154,11 @@ $TTL    604800
 1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.a.7.5	IN	PTR	my-server.example.com.	
 ```
 
+## Production Update!
+
+The tunnel servers are a shared resource and latency or throughput cannot be guaranteed. Running a speed testing server through the tunnel is likely to be constrained with contention for resources, which can affect your latency and throughput results.
+
+one month production is still ok in this case ==> Honkong to Yangon and Singapore to Mandalay.
+
 Thank You!
 
