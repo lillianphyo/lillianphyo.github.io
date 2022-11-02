@@ -156,7 +156,7 @@ $TTL    604800
 
 ## Production Update!
 
-The tunnel servers are a shared resource and latency or throughput cannot be guaranteed. Running a speed testing server through the tunnel is likely to be constrained with contention for resources, which can affect your latency and throughput results.
+The tunnel servers are a shared resource and latency or throughput cannot be guaranteed. Running a testing server through the tunnel is likely to be constrained with contention for resources, which can affect your latency and throughput results.
 
 one month production is still ok in this case ==> Honkong to Yangon and Singapore to Mandalay.
 
