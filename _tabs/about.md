@@ -20,6 +20,9 @@ order: 4
 <a href="https://developer.cisco.com/user/profile/55aadd53-9704-11e8-9afd-0605a886e7c7">
   <img align="left" alt="lillian's devnet" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@3.12.4/icons/cisco.svg" />
 </a>
+<a href="https://www.kaggle.com/lillianphyo">
+  <img align="left" alt="lillian's devnet" width="22px" src="https://raw.githubusercontent.com/lillianphyo/lillianphyo/master/src/kaggle.svg" />
+</a>
 
 
 <br />
@@ -28,7 +31,7 @@ order: 4
 A System Engineer 🚀 who love System Integration. Passionate about Computer science and software engineering because anything I dream of can become a reality by using one tool,a computer.   
 
 Fav Quote:   
-Make things happen. Adventurous and Realistic Happy-Go-Lucky stubborn optimistic Gemini! ♊
+Make things happen, Adventurous and Realistic, Happy-Go-Lucky, stubborn optimistic!♊
 
 <!--- <img align="right"  src="https://media1.tenor.com/images/e8a3b80ecb33fd79b04f093cccd2353b/tenor.gif?itemid=15853135" /> -->
   
@@ -42,6 +45,18 @@ Make things happen. Adventurous and Realistic Happy-Go-Lucky stubborn optimistic
 ![lillian's github stats](https://github-readme-stats.vercel.app/api?username=lillianphyo&show_icons=true&hide_border=true)
 
 ⭐️ From [lillianphyo](https://github.com/lillianphyo)  
+
+<a href="https://github.com/lillianphyo/csr1000v_upgrade">
+  <img align="left" src="https://github-readme-stats.vercel.app/api/pin/?username=lillianphyo&repo=csr1000v_upgrade" />
+</a>
+
+<a href="https://github.com/lillianphyo/python-gmail-api-test">
+  <img align="left" src="https://github-readme-stats.vercel.app/api/pin/?username=lillianphyo&repo=python-gmail-api-test" />
+</a>
+
+<a href="https://github.com/lillianphyo/Ansible-module-jupiter_netme">
+  <img align="left" src="https://github-readme-stats.vercel.app/api/pin/?username=lillianphyo&repo=Ansible-module-jupiter_netme" />
+</a>
    
 <!--- > Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page.
 {: .prompt-tip } -->
