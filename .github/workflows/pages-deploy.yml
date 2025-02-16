@@ -1,4 +1,5 @@
 name: "Build and Deploy"
+
 on:
   push:
     branches:
@@ -37,34 +38,31 @@ jobs:
           cache: "npm"
           cache-dependency-path: package-lock.json
 
+      - name: Install Jekyll and Dependencies
+        run: |
+          gem install bundler
+          bundle install
+
       - name: Install npm Dependencies
         run: npm ci
 
-      - name: Install bootstrap
-        run: npm install bootstrap
-
-      - name: Copy Bootstrap to assets
+      - name: Install Bootstrap and Copy to Assets
         run: |
+          npm install bootstrap
           mkdir -p assets/css/vendors
           cp -r node_modules/bootstrap/scss assets/css/vendors/bootstrap
 
-      - name: Build Site
+      - name: Build Jekyll Site
         run: bundle exec jekyll build
         env:
           JEKYLL_ENV: "production"
 
-      - name: Deploy to gh-pages branch
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
-          folder: _site
-          clean: true
-
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
-          account-id: ${{ secrets.CF_ACCOUNT_ID }}
-          project-name: ${{ secrets.CF_PROJECT_NAME }}
-          api-token: ${{ secrets.CF_API_TOKEN }}
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          projectName: ${{ secrets.CF_PROJECT_NAME }}
           directory: "_site"
-          gitHub-token: ${{ secrets.GITHUB_TOKEN }}
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          wranglerVersion: 2
