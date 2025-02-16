@@ -45,6 +45,15 @@ jobs:
           ruby-version: 3.3
           bundler-cache: true
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: "npm"
+
+      - name: Install Bootstrap
+        run: npm install bootstrap
+
       - name: Build site
         run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
         env:
