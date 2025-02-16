@@ -34,7 +34,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
+          cache: "npm"
           cache-dependency-path: package-lock.json
 
       - name: Install npm Dependencies
@@ -56,3 +56,12 @@ jobs:
           branch: gh-pages
           folder: _site
           clean: true
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          account-id: ${{ secrets.CF_ACCOUNT_ID }}
+          project-name: ${{ secrets.CF_PROJECT_NAME }}
+          api-token: ${{ secrets.CF_API_TOKEN }}
+          directory: "_site"
+          gitHub-token: ${{ secrets.GITHUB_TOKEN }}
