@@ -51,6 +51,12 @@ jobs:
           node-version: 18
           cache: "npm"
 
+      - name: Initialize package.json
+        run: npm init -y
+
+      - name: Install dependencies
+        run: npm install
+
       - name: Install Bootstrap
         run: npm install bootstrap
 
