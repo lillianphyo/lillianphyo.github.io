@@ -139,5 +139,10 @@
       ],
       "@semantic-release/github"
     ]
-  }
+  },
+  "main": "purgecss.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "keywords": []
 }
