@@ -29,11 +29,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          fetch-depth: 0
-          # submodules: true
-          # If using the 'assets' git submodule from Chirpy Starter, uncomment above
-          # (See: https://github.com/cotes2020/chirpy-starter/tree/main/assets)
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: 'package-lock.json'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Bootstrap
+        run: npm install bootstrap
 
       - name: Setup Pages
         id: pages
@@ -44,21 +52,6 @@ jobs:
         with:
           ruby-version: 3.3
           bundler-cache: true
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          cache: "npm"
-
-      - name: Initialize package.json
-        run: npm init -y
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Install Bootstrap
-        run: npm install bootstrap
 
       - name: Build site
         run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
