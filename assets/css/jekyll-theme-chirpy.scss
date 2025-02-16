@@ -1,7 +1,7 @@
 ---
 ---
 
-@use 'vendors/bootstrap';
+// @use 'vendors/bootstrap';
 @use 'main
 {%- if jekyll.environment == ' production ' -%}
   .bundle

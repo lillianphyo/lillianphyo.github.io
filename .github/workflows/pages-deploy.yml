@@ -40,6 +40,9 @@ jobs:
       - name: Install npm Dependencies
         run: npm ci
 
+      - name: Install bootstrap
+        run: npm install bootstrap
+
       - name: Copy Bootstrap to assets
         run: |
           mkdir -p assets/css/vendors
