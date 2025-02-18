@@ -102,3 +102,10 @@ Dynamic **Software Engineer** with **5 years of experience** in front-end design
 
 ⭐️ From [Lillian Phyo](https://github.com/lillianphyo)
 
+<!-- [![trophy](https://github-profile-trophy.vercel.app/?username=lillianphyo)](https://github.com/ryo-ma/github-profile-trophy) -->
+
+[![trophy](https://github-profile-trophy.vercel.app/?username=lillianphyo&theme=onedark)](https://github.com/ryo-ma/github-profile-trophy)
+
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=lillianphyo&layout=compact)
+
+![imyuanli's GitHub stats](https://github-readme-stats.vercel.app/api?username=lillianphyo&show_icons=true&theme=transparent)
