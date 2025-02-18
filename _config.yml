@@ -16,10 +16,10 @@ timezone: "Asia/Yangon"
 
 title: LillianPhyo # the main title
 
-tagline: Happy-go-lucky, stubborn optimist! computer science deep-rooting learner # it will display as the subtitle
+tagline: Researcher! computer science deep-rooting learner! # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
-  A minimal, responsive and feature-rich Jekyll theme for technical writing.
+  Researcher! computer science deep-rooting learner!
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
@@ -47,7 +47,7 @@ social:
 
 # Site Verification Settings
 webmaster_verifications:
-  google: # fill in your Google verification code
+  google: wwUwvufV-Ey3ZdV0GA7rXfSZHMBkK5l4pk0pXTLkc8M # fill in your Google verification code
   bing: # fill in your Bing verification code
   alexa: # fill in your Alexa verification code
   yandex: # fill in your Yandex verification code
@@ -70,13 +70,14 @@ analytics:
     id: # fill in your Matomo ID
     domain: # fill in your Matomo domain
   cloudflare:
-    id: # fill in your Cloudflare Web Analytics token
+    id: Ybz9ZDOutWjfrN9Dalet0ISgy3raPD7d0U8b0EDE # fill in your Cloudflare Web Analytics token
   fathom:
     id: # fill in your Fathom Site ID
 
 # Page views settings
 pageviews:
-  provider: # now only supports 'goatcounter'
+  provider: goatcounter # now only supports 'goatcounter'
+  goatcounter_url: https://lillianphyo.goatcounter.com/count
 
 # Prefer color scheme setting.
 #
@@ -99,11 +100,12 @@ theme_mode: # [light | dark]
 cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: "https://avatars.githubusercontent.com/u/19262583?v=4"
+avatar: /assets/img/avatar.jpg
+#"https://avatars.githubusercontent.com/u/19262583?v=4"
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
-social_preview_image: # string, local or CORS resources
+social_preview_image: /assets/img/social-preview.jpg # string, local or CORS resources
 
 # boolean type, the global switch for TOC in posts.
 toc: true
