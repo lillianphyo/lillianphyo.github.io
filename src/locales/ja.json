@@ -1,0 +1,50 @@
+{
+  "nav": {
+    "home": "ホーム",
+    "about": "プロフィール",
+    "projects": "プロジェクト",
+    "blog": "ブログ",
+    "contact": "お問い合わせ"
+  },
+  "hero": {
+    "title": "こんにちは、Lillian Phyoです",
+    "subtitle": "博士課程学生 & シニアフルスタック開発者",
+    "description": "研究と開発に情熱を注ぎ、学術界と産業界を結ぶ革新的なソリューションの創造に取り組んでいます。",
+    "cta": "作品を見る",
+    "available": "機会に対応可能"
+  },
+  "about": {
+    "title": "プロフィール",
+    "description": "私は埼玉大学の博士課程学生であり、シニアフルスタック開発者として豊富な経験を持っています。私の研究は最先端技術とその実世界での応用に焦点を当てています。",
+    "education": "学歴",
+    "experience": "経験",
+    "skills": "スキル",
+    "phd": "博士課程 - コンピュータサイエンス（埼玉大学）- 現在",
+    "senior_dev": "シニアフルスタック開発者",
+    "tech_stack": "React, Node.js, TypeScript, Python, 機械学習, クラウドコンピューティング"
+  },
+  "projects": {
+    "title": "注目のプロジェクト",
+    "view_project": "プロジェクトを見る",
+    "view_code": "コードを見る"
+  },
+  "blog": {
+    "title": "最新のブログ投稿",
+    "read_more": "続きを読む",
+    "published": "公開日"
+  },
+  "contact": {
+    "title": "お問い合わせ",
+    "description": "新しい機会やコラボレーションに常に興味を持っています。",
+    "name": "お名前",
+    "email": "メールアドレス",
+    "message": "メッセージ",
+    "send": "メッセージを送信",
+    "location": "埼玉県、日本",
+    "university": "埼玉大学"
+  },
+  "footer": {
+    "rights": "すべての権利を保有しています。",
+    "built_with": ""
+  }
+}

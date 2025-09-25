@@ -1,0 +1,5 @@
+# Handle client-side routing for Next.js
+/*    /index.html   200
+
+# Redirect old paths if needed
+/portfolio-website/*    /:splat    301

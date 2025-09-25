@@ -1,0 +1,50 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Hi, I'm Lillian Phyo",
+    "subtitle": "PhD Student & Senior Full Stack Developer",
+    "description": "Passionate about research and development, creating innovative solutions that bridge academia and industry.",
+    "cta": "View My Work",
+    "available": "Available for opportunities"
+  },
+  "about": {
+    "title": "About Me",
+    "description": "I am a PhD student at Saitama University with extensive experience as a Senior Full Stack Developer. My research focuses on cutting-edge technologies and their practical applications in real-world scenarios.",
+    "education": "Education",
+    "experience": "Experience",
+    "skills": "Skills",
+    "phd": "PhD in Computer Science - Saitama University (Current)",
+    "senior_dev": "Senior Full Stack Developer",
+    "tech_stack": "React, Node.js, TypeScript, Python, Machine Learning, Cloud Computing"
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "view_project": "View Project",
+    "view_code": "View Code"
+  },
+  "blog": {
+    "title": "Latest Blog Posts",
+    "read_more": "Read More",
+    "published": "Published on"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "description": "I'm always interested in new opportunities and collaborations.",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message",
+    "location": "Saitama, Japan",
+    "university": "Saitama University"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "built_with": ""
+  }
+}

@@ -1,26 +1,292 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Light Theme */
+  --background: 0 0% 100%;
+  --foreground: 222 47% 11%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 47% 11%;
+  --primary: 217 91% 60%;            /* Accent */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222 47% 11%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215 16% 47%;
+  --accent: 210 40% 96%;
+  --accent-foreground: 222 47% 11%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 214 32% 91%;             /* zinc-200 */
+  --input: 214 32% 91%;
+  --ring: 217 91% 60%;               /* focus ring */
+  --chart-1: 217 91% 60%;
+  --chart-2: 227 72% 33%;            /* Accent Secondary */
+  --chart-3: 210 17% 98%;
+  --chart-4: 221 39% 23%;
+  --chart-5: 217 92% 75%;
+  --radius: 0.625rem;
+  --sidebar: 0 0% 100%;
+  --sidebar-foreground: 240 6% 16%;  /* zinc-800 */
+  --sidebar-primary: 217 91% 60%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 0 0% 98%;        /* zinc-50 */
+  --sidebar-accent-foreground: 240 4% 46%; /* zinc-700 */
+  --sidebar-border: 214 32% 91%;
+  --sidebar-ring: 217 91% 60%;
+  /* Fonts */
+  --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-body: 'Source Sans Pro', system-ui, -apple-system, sans-serif;
+}
+
+/* Strict Black & White - Dark */
+.dark {
+  /* Dark Theme */
+  --background: 222 14% 10%;
+  --foreground: 0 0% 98%;
+  --card: 222 14% 14%;
+  --card-foreground: 0 0% 98%;
+  --popover: 222 14% 10%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 217 92% 75%;           /* Accent */
+  --primary-foreground: 222 47% 11%;
+  --secondary: 217 32% 17%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 217 32% 17%;
+  --muted-foreground: 215 20% 65%;
+  --accent: 217 32% 17%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 4% 46%;             /* zinc-700 */
+  --input: 240 4% 46%;
+  --ring: 217 92% 75%;              /* Accent Secondary */
+  --chart-1: 217 92% 75%;
+  --chart-2: 217 91% 60%;
+  --chart-3: 240 5% 64%;            /* zinc-400 */
+  --chart-4: 240 6% 16%;            /* zinc-800 */
+  --chart-5: 240 6% 10%;            /* zinc-900 */
+  --sidebar: 240 6% 10%;            /* zinc-900 */
+  --sidebar-foreground: 0 0% 98%;   /* zinc-50 */
+  --sidebar-primary: 217 92% 75%;
+  --sidebar-primary-foreground: 222 47% 11%;
+  --sidebar-accent: 240 4% 46%;     /* zinc-700 */
+  --sidebar-accent-foreground: 240 6% 80%; /* zinc-300 */
+  --sidebar-border: 240 4% 46%;
+  --sidebar-ring: 217 92% 75%;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+    @apply border-border outline-ring/50;
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    @apply bg-background text-foreground;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Themed prose for modern, simple blog content */
+.prose {
+  --tw-prose-body: hsl(var(--foreground));
+  --tw-prose-headings: hsl(var(--foreground));
+  --tw-prose-lead: hsl(var(--foreground));
+  --tw-prose-links: hsl(var(--primary));
+  --tw-prose-bold: hsl(var(--foreground));
+  --tw-prose-counters: hsl(var(--foreground));
+  --tw-prose-bullets: hsl(var(--foreground));
+  --tw-prose-hr: hsl(var(--border));
+  --tw-prose-quotes: hsl(var(--foreground));
+  --tw-prose-quote-borders: hsl(var(--border));
+  --tw-prose-captions: hsl(var(--muted-foreground));
+  --tw-prose-code: hsl(var(--foreground));
+  --tw-prose-pre-code: hsl(var(--foreground));
+  --tw-prose-pre-bg: hsl(var(--card));
+  --tw-prose-th-borders: hsl(var(--border));
+  --tw-prose-td-borders: hsl(var(--border));
 }
+
+.prose a {
+  color: hsl(var(--primary));
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prose pre {
+  background-color: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.prose code {
+  background-color: hsl(var(--muted));
+  color: hsl(var(--foreground));
+  padding: 0.1rem 0.3rem;
+  border-radius: 0.25rem;
+}
+
+.prose blockquote {
+  border-left: 3px solid hsl(var(--border));
+  padding-left: 1rem;
+  color: hsl(var(--foreground));
+}
+
+.prose hr {
+  border-color: hsl(var(--border));
+}
+
+/* Modern scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--foreground));
+}
+
+/* Smooth transitions */
+* {
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Enhanced focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Enhanced hover states */
+.hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Enhanced button hover states */
+.btn-hover {
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  transform: translateY(0);
+}
+
+/* Enhanced link hover states */
+.link-hover {
+  transition: color 0.2s ease, background-color 0.2s ease;
+  position: relative;
+}
+
+.link-hover:hover {
+  color: hsl(var(--primary));
+}
+
+.dark .link-hover:hover {
+  color: hsl(var(--primary));
+}
+
+/* Simple text - no gradient */
+.gradient-text {
+  color: hsl(var(--foreground));
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Elegant animations */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+.delay-300 {
+  animation-delay: 0.3s;
+}
+
+.delay-400 {
+  animation-delay: 0.4s;
+}
+
+.delay-500 {
+  animation-delay: 0.5s;
+}
+
+.delay-600 {
+  animation-delay: 0.6s;
+}
+
+/* Modern shadows */
+
+/* Note: Dark theme variables are defined above; remove duplicate dark block */
