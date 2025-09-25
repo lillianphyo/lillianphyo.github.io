@@ -34,6 +34,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: lillianphyo-portfolio
+          projectName: lillianphyo-github-io
           directory: out
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          wranglerVersion: 2
