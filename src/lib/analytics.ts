@@ -12,7 +12,7 @@ export interface PageView {
 // Extend Window interface for Cloudflare
 declare global {
   interface Window {
-    cfBeacon?: (action: string, data: any) => void
+    cfBeacon?: (action: string, data: unknown) => void
   }
 }
 
@@ -28,8 +28,8 @@ export interface BlogView {
 }
 
 // In-memory storage for development (replace with database in production)
-let pageViews: PageView[] = []
-let blogViews: BlogView[] = []
+const pageViews: PageView[] = []
+const blogViews: BlogView[] = []
 
 // Generate UUID that works across all environments
 function generateUUID(): string {
@@ -123,7 +123,7 @@ export class Analytics {
   }
 
   // Send data to Google Analytics
-  private static sendToGoogleAnalytics(event: string, data: any) {
+  private static sendToGoogleAnalytics(event: string, data: { title?: string; slug?: string; path?: string; readTime?: number }) {
     if (typeof window === 'undefined' || !window.gtag) return
 
     window.gtag('event', event, {

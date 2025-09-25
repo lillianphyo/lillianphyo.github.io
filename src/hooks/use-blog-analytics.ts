@@ -32,7 +32,7 @@ export function useBlogAnalytics({ slug, title }: UseBlogAnalyticsProps) {
       // Track with Google Analytics
       trackEvent('blog_view', 'engagement', title)
     })
-  }, [slug, title])
+  }, [slug, title, trackEvent])
 
   // Track read time
   useEffect(() => {
