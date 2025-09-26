@@ -39,14 +39,12 @@ export function Comments() {
     script.setAttribute('data-category', category as string);
     script.setAttribute('data-category-id', categoryId as string);
     script.setAttribute('data-mapping', 'pathname');
-    script.setAttribute('data-term', 'Blog Comments');
     script.setAttribute('data-strict', '0');
     script.setAttribute('data-reactions-enabled', '1');
     script.setAttribute('data-emit-metadata', '0');
     script.setAttribute('data-input-position', 'bottom');
     script.setAttribute('data-theme', 'preferred_color_scheme');
     script.setAttribute('data-lang', 'en');
-    script.setAttribute('data-loading', 'lazy');
 
     script.onload = () => console.log('Giscus script loaded');
     script.onerror = () => console.error('Giscus script failed to load');
