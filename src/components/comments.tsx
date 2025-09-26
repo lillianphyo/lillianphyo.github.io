@@ -4,27 +4,22 @@ import { useEffect, useRef, useState } from 'react';
 
 export function Comments() {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const [configured, setConfigured] = useState<boolean>(false);
   const [mounted, setMounted] = useState<boolean>(false);
 
-  const repo = process.env.NEXT_PUBLIC_GISCUS_REPO;
-  const repoId = process.env.NEXT_PUBLIC_GISCUS_REPO_ID;
-  const category = process.env.NEXT_PUBLIC_GISCUS_CATEGORY;
-  const categoryId = process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID;
+  // Use hardcoded values from your script configuration
+  const repo = 'lillianphyo/lillianphyo.github.io';
+  const repoId = 'R_kgDOP2uDpQ';
+  const category = 'General';
+  const categoryId = 'DIC_kwDOP2uDpc4Cv4dB';
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   useEffect(() => {
-    if (!mounted) return;
+    if (!mounted || !containerRef.current) return;
     
-    const isConfigured = Boolean(repo && repoId && category && categoryId);
-    setConfigured(isConfigured);
-    
-    console.log('Giscus config:', { repo, repoId, category, categoryId, isConfigured });
-    
-    if (!isConfigured || !containerRef.current) return;
+    console.log('Giscus config:', { repo, repoId, category, categoryId });
 
     // Prevent double mounts on Fast Refresh
     if (containerRef.current.querySelector('iframe')) return;
@@ -34,10 +29,10 @@ export function Comments() {
     script.async = true;
     script.crossOrigin = 'anonymous';
 
-    script.setAttribute('data-repo', repo as string);
-    script.setAttribute('data-repo-id', repoId as string);
-    script.setAttribute('data-category', category as string);
-    script.setAttribute('data-category-id', categoryId as string);
+    script.setAttribute('data-repo', repo);
+    script.setAttribute('data-repo-id', repoId);
+    script.setAttribute('data-category', category);
+    script.setAttribute('data-category-id', categoryId);
     script.setAttribute('data-mapping', 'pathname');
     script.setAttribute('data-strict', '0');
     script.setAttribute('data-reactions-enabled', '1');
@@ -50,7 +45,7 @@ export function Comments() {
     script.onerror = () => console.error('Giscus script failed to load');
 
     containerRef.current.appendChild(script);
-  }, [mounted, repo, repoId, category, categoryId]);
+  }, [mounted]);
 
   if (!mounted) {
     return (
@@ -60,17 +55,6 @@ export function Comments() {
     );
   }
 
-  if (!configured) {
-    return (
-      <div className="rounded-md border border-border p-4 text-sm text-muted-foreground">
-        Comments are not configured. Add NEXT_PUBLIC_GISCUS_REPO, NEXT_PUBLIC_GISCUS_REPO_ID,
-        NEXT_PUBLIC_GISCUS_CATEGORY, and NEXT_PUBLIC_GISCUS_CATEGORY_ID to enable comments.
-        <br />
-        <br />
-        Current config: {JSON.stringify({ repo, repoId, category, categoryId })}
-      </div>
-    );
-  }
 
   return <div ref={containerRef} className="giscus" />;
 }
