@@ -3,3 +3,7 @@
 
 # Redirect old paths if needed
 /portfolio-website/*    /:splat    301
+
+# Redirect www to non-www (for both Cloudflare and GitHub Pages)
+https://www.lillianphyo.net/*    https://lillianphyo.net/:splat    301
+http://www.lillianphyo.net/*    https://lillianphyo.net/:splat    301
