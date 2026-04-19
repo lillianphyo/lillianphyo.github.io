@@ -8,6 +8,10 @@ import { Textarea } from '@/components/ui/textarea';
 import { Mail, MapPin, Send } from 'lucide-react';
 import { useState } from 'react';
 
+const FORM_ENDPOINT = 'https://formsubmit.co/ajax/khinpyaephyosan@gmail.com';
+
+type SubmitState = 'idle' | 'submitting' | 'success' | 'error';
+
 export function ContactSection() {
   const { t } = useTranslation();
   const [formData, setFormData] = useState({
@@ -15,23 +19,37 @@ export function ContactSection() {
     email: '',
     message: ''
   });
+  const [status, setStatus] = useState<SubmitState>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    );
-    const mailto = `mailto:khinpyaephyosan@gmail.com?subject=${subject}&body=${body}`;
-
+    setStatus('submitting');
     try {
-      window.location.href = mailto;
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: `Portfolio contact from ${formData.name}`,
+          _template: 'table',
+          _captcha: 'false'
+        })
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || data.success === 'false') {
+        setStatus('error');
+        return;
+      }
+      setFormData({ name: '', email: '', message: '' });
+      setStatus('success');
     } catch {
-      // Fallback for environments where mailto navigation may be blocked
-      window.open(mailto, '_blank');
+      setStatus('error');
     }
-
-    setFormData({ name: '', email: '', message: '' });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -39,6 +57,7 @@ export function ContactSection() {
       ...formData,
       [e.target.name]: e.target.value
     });
+    if (status !== 'idle' && status !== 'submitting') setStatus('idle');
   };
 
   return (
@@ -146,10 +165,24 @@ export function ContactSection() {
                     />
                   </div>
                   
-                  <Button type="submit" className="w-full h-12 text-lg font-semibold shadow-modern-lg hover:shadow-xl transition-all duration-300 btn-hover focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
+                  <Button
+                    type="submit"
+                    disabled={status === 'submitting'}
+                    className="w-full h-12 text-lg font-semibold shadow-modern-lg hover:shadow-xl transition-all duration-300 btn-hover focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                  >
                     <Send className="h-5 w-5 mr-2" />
-                    {t('contact.send')}
+                    {status === 'submitting' ? t('contact.sending') : t('contact.send')}
                   </Button>
+                  {status === 'success' && (
+                    <p role="status" className="text-sm text-center text-green-600 dark:text-green-400">
+                      {t('contact.success')}
+                    </p>
+                  )}
+                  {status === 'error' && (
+                    <p role="alert" className="text-sm text-center text-red-600 dark:text-red-400">
+                      {t('contact.error')}
+                    </p>
+                  )}
                 </form>
               </CardContent>
             </Card>

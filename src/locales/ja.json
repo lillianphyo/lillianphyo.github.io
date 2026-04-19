@@ -66,6 +66,9 @@
     "email": "メールアドレス",
     "message": "メッセージ",
     "send": "メッセージを送信",
+    "sending": "送信中...",
+    "success": "メッセージを送信しました。後ほどご返信いたします。",
+    "error": "送信に失敗しました。khinpyaephyosan@gmail.com まで直接ご連絡ください。",
     "location": "埼玉県、日本",
     "university": "埼玉大学"
   },

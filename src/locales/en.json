@@ -66,6 +66,9 @@
     "email": "Email",
     "message": "Message",
     "send": "Send Message",
+    "sending": "Sending...",
+    "success": "Message sent. I'll get back to you soon.",
+    "error": "Something went wrong. Please email khinpyaephyosan@gmail.com directly.",
     "location": "Saitama, Japan",
     "university": "Saitama University"
   },

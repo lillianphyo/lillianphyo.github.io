@@ -66,6 +66,9 @@
     "email": "အီးမေးလ်",
     "message": "မက်ဆေ့ချ်",
     "send": "မက်ဆေ့ချ်ပို့ရန်",
+    "sending": "ပို့နေပါသည်...",
+    "success": "မက်ဆေ့ချ် အောင်မြင်စွာ ပို့ပြီးပါပြီ။ မကြာမီ ပြန်ဖြေကြားပေးပါမည်။",
+    "error": "တစ်စုံတစ်ခု မှားယွင်းနေပါသည်။ khinpyaephyosan@gmail.com သို့ တိုက်ရိုက် ပေးပို့ပါ။",
     "location": "Saitama, Japan",
     "university": "Saitama University"
   },
