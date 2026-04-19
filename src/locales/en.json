@@ -26,7 +26,33 @@
   "projects": {
     "title": "Featured Projects",
     "view_project": "View Project",
-    "view_code": "View Code"
+    "view_code": "View Code",
+    "items": {
+      "research": {
+        "title": "Semantic Speech Reconstruction from Cognitive Signals",
+        "category": "Doctoral Research",
+        "role": "PhD Student",
+        "description": "Research on reading what a person is trying to say directly from brain activity. Instead of guessing one word out of a fixed list, the goal is to recover the meaning a person intends to express from non-invasive cognitive signals such as EEG. The motivation is communication support for people who have lost the ability to speak, where reconstructing intent at the semantic level is far more useful than classifying individual syllables."
+      },
+      "isp": {
+        "title": "Multi-Tenant ISP Operations Platform",
+        "category": "Enterprise Platform",
+        "role": "Lead Software Engineer",
+        "description": "Operations and business support system for internet service providers, serving multiple operator tenants from a single deployment. Covers subscriber lifecycle, billing, provisioning, and a real-time telemetry service that ingests PPPoE session data from network equipment and aggregates usage into half-hourly, daily, and monthly analytics. Jobs run on a Redis-backed queue with strict idempotency guarantees; production monitoring is built on AWS CloudWatch with Slack alerting."
+      },
+      "pos": {
+        "title": "Restaurant POS & Kitchen Display",
+        "category": "Product Engineering",
+        "role": "Lead Software Engineer",
+        "description": "Point-of-sale platform for restaurants with a web-based admin dashboard, cross-platform kitchen display (KDS), and device-bound authentication. Designed for reliability in low-connectivity environments with offline order capture and deterministic sync on reconnect. Covers menu management, order routing to stations, and end-of-day reconciliation."
+      },
+      "chatbot": {
+        "title": "Education Chatbot for Non-Profit",
+        "category": "Social Impact",
+        "role": "Senior Full Stack Engineer",
+        "description": "Multi-channel learning chatbot (Messenger, Viber, Telegram) delivering curricula, quizzes, and certification to users across Myanmar. Built as the primary engagement surface for a youth-empowerment non-profit, paired with an internal admin dashboard for content authoring, user support, and impact reporting."
+      }
+    }
   },
   "blog": {
     "title": "Latest Blog Posts",
