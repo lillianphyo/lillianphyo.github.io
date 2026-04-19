@@ -26,7 +26,33 @@
   "projects": {
     "title": "ထင်ရှားသော စီမံကိန်းများ",
     "view_project": "စီမံကိန်းကို ကြည့်ရန်",
-    "view_code": "ကုဒ်ကို ကြည့်ရန်"
+    "view_code": "ကုဒ်ကို ကြည့်ရန်",
+    "items": {
+      "research": {
+        "title": "ဉာဏ်ရည်အချက်ပြများမှ အဓိပ္ပာယ်ပါသော စကား ပြန်လည်တည်ဆောက်ခြင်း",
+        "category": "ပါရဂူသုတေသန",
+        "role": "ပါရဂူကျောင်းသား",
+        "description": "လူတစ်ဦး ပြောဆိုလိုသော စကားကို ဦးနှောက်လှုပ်ရှားမှုမှ တိုက်ရိုက် ဖတ်နိုင်ရန် သုတေသန ပြုပါသည်။ သတ်မှတ်ထားသော စကားလုံးစာရင်းမှ တစ်ခုကို ခန့်မှန်းခြင်းအစား၊ EEG ကဲ့သို့သော ဉာဏ်ရည်ဆိုင်ရာ အချက်ပြများမှ ပုဂ္ဂိုလ်တစ်ဦး ပြောဆိုလိုသော အဓိပ္ပာယ်ကို ပြန်လည် ရယူရန် ရည်ရွယ်ပါသည်။ စကားပြောနိုင်စွမ်း ဆုံးရှုံးခဲ့သူများအတွက် ဆက်သွယ်ရေး အထောက်အကူ ပေးရန် ဖြစ်ပြီး၊ အသံလုံးများအလိုက် ခွဲခြားခြင်းထက် အဓိပ္ပာယ် အဆင့်တွင် ရည်ရွယ်ချက်ကို ပြန်လည် တည်ဆောက်ခြင်းသည် ပိုမို အသုံးဝင်ပါသည်။"
+      },
+      "isp": {
+        "title": "Multi-Tenant ISP လည်ပတ်မှု ပလက်ဖောင်း",
+        "category": "လုပ်ငန်းသုံး ပလက်ဖောင်း",
+        "role": "Lead Software Engineer",
+        "description": "Internet service provider များအတွက် operations နှင့် business support system ဖြစ်ပြီး၊ တစ်ခုတည်းသော deployment မှ operator tenant များစွာကို ဝန်ဆောင်မှု ပေးပါသည်။ Subscriber lifecycle၊ billing၊ provisioning နှင့် network equipment မှ PPPoE session data ကို real-time ရယူပြီး အသုံးပြုမှုကို နာရီဝက်၊ နေ့စဉ်၊ လစဉ် အလိုက် စုဆောင်းသော telemetry service ပါဝင်ပါသည်။ Jobs များသည် Redis queue ပေါ်တွင် idempotency အာမခံချက်ဖြင့် လည်ပတ်ပြီး၊ production monitoring ကို AWS CloudWatch နှင့် Slack alerting ဖြင့် တည်ဆောက်ထားပါသည်။"
+      },
+      "pos": {
+        "title": "Restaurant POS နှင့် Kitchen Display",
+        "category": "ထုတ်ကုန် ဖွံ့ဖြိုးမှု",
+        "role": "Lead Software Engineer",
+        "description": "စားသောက်ဆိုင်များအတွက် web-based admin dashboard၊ cross-platform kitchen display (KDS) နှင့် device-bound authentication ပါဝင်သော point-of-sale platform ဖြစ်ပါသည်။ Connectivity နိမ့်သော ပတ်ဝန်းကျင်များတွင်ပါ စိတ်ချစွာ အလုပ်လုပ်နိုင်ရန် offline order capture နှင့် reconnect တွင် deterministic sync ဖြင့် ဒီဇိုင်းထုတ်ထားပါသည်။ Menu management၊ order routing နှင့် တစ်နေ့တာအဆုံး reconciliation တို့ ပါဝင်ပါသည်။"
+      },
+      "chatbot": {
+        "title": "လူမှုအကျိုးပြု ပညာရေး Chatbot",
+        "category": "လူမှုရေး သက်ရောက်မှု",
+        "role": "Senior Full Stack Engineer",
+        "description": "Messenger၊ Viber နှင့် Telegram တို့တွင် သင်ရိုးများ၊ quiz များနှင့် certificate များကို မြန်မာပြည်တစ်ဝှမ်းရှိ အသုံးပြုသူများထံ ပေးပို့သော multi-channel learning chatbot ဖြစ်ပါသည်။ လူငယ် ဖွံ့ဖြိုးရေး non-profit တစ်ခု၏ အဓိက engagement surface အဖြစ် တည်ဆောက်ထားပြီး၊ အကြောင်းအရာ ရေးသားခြင်း၊ အသုံးပြုသူ ပံ့ပိုးမှုနှင့် အကျိုးသက်ရောက်မှု အစီရင်ခံစာများအတွက် internal admin dashboard တစ်ခုလည်း ပါဝင်ပါသည်။"
+      }
+    }
   },
   "blog": {
     "title": "နောက်ဆုံး ဘလော့ဂ်ပို့စ်များ",
@@ -40,6 +66,9 @@
     "email": "အီးမေးလ်",
     "message": "မက်ဆေ့ချ်",
     "send": "မက်ဆေ့ချ်ပို့ရန်",
+    "sending": "ပို့နေပါသည်...",
+    "success": "မက်ဆေ့ချ် အောင်မြင်စွာ ပို့ပြီးပါပြီ။ မကြာမီ ပြန်ဖြေကြားပေးပါမည်။",
+    "error": "တစ်စုံတစ်ခု မှားယွင်းနေပါသည်။ khinpyaephyosan@gmail.com သို့ တိုက်ရိုက် ပေးပို့ပါ။",
     "location": "Saitama, Japan",
     "university": "Saitama University"
   },
