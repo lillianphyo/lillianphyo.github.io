@@ -2,46 +2,52 @@
 
 import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ExternalLink, Github } from 'lucide-react';
+
+type Project = {
+  title: string;
+  category: string;
+  role: string;
+  description: string;
+  technologies: string[];
+};
 
 export function ProjectsSection() {
   const { t } = useTranslation();
 
-  const projects = [
+  const projects: Project[] = [
     {
-      title: "AI Research Platform",
-      description: "A comprehensive platform for machine learning research with real-time data processing and visualization capabilities.",
-      technologies: ["Python", "React", "TensorFlow", "PostgreSQL"],
-      githubUrl: "https://www.github.com/lillianphyo",
-      liveUrl: "https://example.com",
-      image: "/api/placeholder/400/250"
+      title: "EEG Inner-Speech Classification",
+      category: "PhD Research",
+      role: "Saitama University",
+      description:
+        "Benchmark study on cross-condition transfer learning for EEG-based inner-speech decoding. Compares modern convolutional and transformer architectures (EEGNet, ShallowConvNet, DeepConvNet, EEGConformer) across overt and imagined speech conditions, with leave-one-subject-out evaluation on public datasets. Manuscript prepared for IEEE Transactions on Neural Systems and Rehabilitation Engineering.",
+      technologies: ["Python", "PyTorch", "MNE-Python", "NumPy", "LaTeX"],
     },
     {
-      title: "Full Stack E-commerce",
-      description: "Modern e-commerce platform with payment integration, inventory management, and admin dashboard.",
-      technologies: ["Next.js", "Node.js", "TypeScript", "Stripe"],
-      githubUrl: "https://www.github.com/lillianphyo",
-      liveUrl: "https://example.com",
-      image: "/api/placeholder/400/250"
+      title: "Multi-Tenant ISP Operations Platform",
+      category: "Enterprise Product",
+      role: "Senior Full Stack Engineer",
+      description:
+        "Operations and business support system for internet service providers, serving multiple operator tenants from a single deployment. Covers subscriber lifecycle, billing, provisioning, and a real-time telemetry service that ingests PPPoE session data from network equipment and aggregates usage into half-hourly, daily, and monthly analytics. Jobs run on a Redis-backed queue with strict idempotency guarantees; production monitoring is built on AWS CloudWatch with Slack alerting.",
+      technologies: ["React", "TypeScript", "Node.js", "PostgreSQL", "Redis", "BullMQ", "TypeORM", "AWS"],
     },
     {
-      title: "University Management System",
-      description: "Complete university management system for students, faculty, and administration with multi-language support.",
-      technologies: ["React", "Node.js", "MongoDB", "i18next"],
-      githubUrl: "https://www.github.com/lillianphyo",
-      liveUrl: "https://example.com",
-      image: "/api/placeholder/400/250"
+      title: "Restaurant POS & Kitchen Display",
+      category: "Product Engineering",
+      role: "Full Stack Engineer",
+      description:
+        "Point-of-sale platform for restaurants with a web-based admin dashboard, cross-platform kitchen display (KDS), and device-bound authentication. Designed for reliability in low-connectivity environments with offline order capture and deterministic sync on reconnect. Covers menu management, order routing to stations, and end-of-day reconciliation.",
+      technologies: ["React", "TypeScript", "Flutter", "Node.js", "PostgreSQL", "TypeORM"],
     },
     {
-      title: "Research Data Analytics",
-      description: "Advanced analytics platform for processing and visualizing research data with interactive dashboards.",
-      technologies: ["Python", "D3.js", "FastAPI", "Docker"],
-      githubUrl: "https://www.github.com/lillianphyo",
-      liveUrl: "https://example.com",
-      image: "/api/placeholder/400/250"
-    }
+      title: "Education Chatbot for Non-Profit",
+      category: "Social Impact",
+      role: "Full Stack Engineer",
+      description:
+        "Multi-channel learning chatbot (Messenger, Viber, Telegram) delivering curricula, quizzes, and certification to users across Myanmar. Built as the primary engagement surface for a youth-empowerment non-profit, paired with an internal admin dashboard for content authoring, user support, and impact reporting.",
+      technologies: ["Python", "aiohttp", "Svelte", "PostgreSQL", "NLU"],
+    },
   ];
 
   return (
@@ -56,40 +62,36 @@ export function ProjectsSection() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {projects.map((project, index) => (
-            <Card key={index} className="group overflow-hidden border border-border shadow-modern-lg hover:shadow-xl transition-all duration-300 bg-card backdrop-blur-sm hover-lift focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2">
-              <div className="h-56 bg-gradient-to-br from-card via-card to-card flex items-center justify-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-foreground/10 to-foreground/10"></div>
-                <div className="text-foreground text-lg font-medium relative z-10">Project Preview</div>
-                <div className="absolute top-4 right-4 w-3 h-3 bg-green-400 dark:bg-green-500 rounded-full animate-pulse"></div>
-              </div>
-              <CardHeader className="pb-4">
-                <CardTitle className="text-xl group-hover:text-primary transition-colors">{project.title}</CardTitle>
-                <CardDescription className="text-muted-foreground leading-relaxed">{project.description}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.technologies.map((tech) => (
-                    <Badge key={tech} variant="secondary" className="px-3 py-1 text-xs font-medium bg-foreground text-background hover:bg-foreground/90 transition-colors">
-                      {tech}
-                    </Badge>
-                  ))}
+              <Card
+                key={index}
+                className="group overflow-hidden border border-border shadow-modern-lg hover:shadow-xl transition-all duration-300 bg-card backdrop-blur-sm hover-lift focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2"
+              >
+                <div className="h-56 bg-gradient-to-br from-card via-card to-card flex items-center justify-center relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-foreground/10 to-foreground/10"></div>
+                  <div className="relative z-10 flex flex-col items-center gap-2 text-center px-6">
+                    <span className="text-sm uppercase tracking-widest text-muted-foreground">{project.category}</span>
+                    <span className="text-foreground text-lg font-medium">{project.role}</span>
+                  </div>
+                  <div className="absolute top-4 right-4 w-3 h-3 bg-green-400 dark:bg-green-500 rounded-full animate-pulse"></div>
                 </div>
-                <div className="flex gap-3">
-                  <Button variant="outline" size="sm" asChild className="flex-1 border-2 hover:bg-accent transition-all duration-200 btn-hover focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
-                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2" aria-label={`View ${project.title} source code`}>
-                      <Github className="h-4 w-4" />
-                      {t('projects.view_code')}
-                    </a>
-                  </Button>
-                  <Button size="sm" asChild className="flex-1 shadow-modern hover:shadow-modern-lg transition-all duration-200 btn-hover focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
-                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2" aria-label={`View ${project.title} live project`}>
-                      <ExternalLink className="h-4 w-4" />
-                      {t('projects.view_project')}
-                    </a>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+                <CardHeader className="pb-4">
+                  <CardTitle className="text-xl group-hover:text-primary transition-colors">{project.title}</CardTitle>
+                  <CardDescription className="text-muted-foreground leading-relaxed">{project.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies.map((tech) => (
+                      <Badge
+                        key={tech}
+                        variant="secondary"
+                        className="px-3 py-1 text-xs font-medium bg-foreground text-background hover:bg-foreground/90 transition-colors"
+                      >
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
