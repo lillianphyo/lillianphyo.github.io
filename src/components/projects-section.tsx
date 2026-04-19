@@ -17,12 +17,12 @@ export function ProjectsSection() {
 
   const projects: Project[] = [
     {
-      title: "EEG Inner-Speech Classification",
+      title: "Semantic Speech Reconstruction from Cognitive Signals",
       category: "Doctoral Research",
       role: "PhD Student",
       description:
-        "Benchmark study on cross-condition transfer learning for EEG-based inner-speech decoding. Compares modern convolutional and transformer architectures (EEGNet, ShallowConvNet, DeepConvNet, EEGConformer) across overt and imagined speech conditions, with leave-one-subject-out evaluation on public datasets. Manuscript prepared for IEEE Transactions on Neural Systems and Rehabilitation Engineering.",
-      technologies: ["Python", "PyTorch", "MNE-Python", "NumPy", "LaTeX"],
+        "Research on reading what a person is trying to say directly from brain activity. Instead of guessing one word out of a fixed list, the goal is to recover the meaning a person intends to express from non-invasive cognitive signals such as EEG. The motivation is communication support for people who have lost the ability to speak, where reconstructing intent at the semantic level is far more useful than classifying individual syllables.",
+      technologies: ["Python", "PyTorch", "MNE-Python", "Transformers", "NumPy"],
     },
     {
       title: "Multi-Tenant ISP Operations Platform",
