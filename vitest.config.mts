@@ -15,6 +15,7 @@ export default defineConfig({
       include: [
         'src/lib/brain-regions.ts',
         'src/lib/publications.ts',
+        'src/lib/speech-story.ts',
         'src/components/brain/**',
         'src/components/research-section.tsx',
       ],

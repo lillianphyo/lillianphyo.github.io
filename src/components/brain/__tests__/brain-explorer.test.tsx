@@ -1,15 +1,24 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { BrainCanvasProps } from '@/components/brain/brain-canvas';
-import { BrainExplorer, PATHWAY_STEP_MS } from '@/components/brain/brain-explorer';
+import { BrainExplorer } from '@/components/brain/brain-explorer';
 import { ResearchSection } from '@/components/research-section';
+import { brainSources } from '@/lib/brain-regions';
 import { publications } from '@/lib/publications';
+import { storyPhases } from '@/lib/speech-story';
+import en from '@/locales/en.json';
 
 vi.mock('next/dynamic', () => ({
   default: () =>
-    function CanvasStub({ activeId, hoveredId, showArcuate, onSelect, onHover }: BrainCanvasProps) {
+    function CanvasStub({ activeIds, hoveredId, pulse, onSelect, onHover }: BrainCanvasProps) {
       return (
-        <div data-testid="canvas" data-active={activeId} data-hovered={hoveredId} data-arcuate={String(showArcuate)}>
+        <div
+          data-testid="canvas"
+          data-active={activeIds.join(',')}
+          data-hovered={hoveredId}
+          data-color={pulse?.color}
+          data-signal={pulse && String(pulse.signal)}
+        >
           <button onClick={() => onSelect('motor')}>mesh-motor</button>
           <button onClick={() => onHover('wernicke')}>hover-wernicke</button>
         </div>
@@ -40,85 +49,105 @@ afterEach(() => {
   disconnect.mockClear();
 });
 
-const step = () => act(() => vi.advanceTimersByTime(PATHWAY_STEP_MS));
+const { heard, spoken, phases } = en.research.brain.story;
+const advance = (phase: keyof typeof storyPhases) => act(() => vi.advanceTimersByTime(storyPhases[phase].ms));
+const play = () => fireEvent.click(screen.getByRole('button', { name: 'Play: hear and speak' }));
 
 describe('BrainExplorer', () => {
-  it('loads the 3D canvas only after the viewer scrolls into view', () => {
+  it('loads the 3D canvas only after the stage scrolls into view', () => {
     render(<BrainExplorer />);
     expect(screen.queryByTestId('canvas')).not.toBeInTheDocument();
     reveal(false);
     expect(screen.queryByTestId('canvas')).not.toBeInTheDocument();
     reveal(true);
-    expect(screen.getByTestId('canvas')).toBeInTheDocument();
+    expect(screen.getByTestId('canvas')).toHaveAttribute('data-active', '');
     expect(disconnect).toHaveBeenCalled();
   });
 
-  it('selects a region from the button list', () => {
+  it('selects an area from the button list', () => {
     render(<BrainExplorer />);
-    expect(screen.getByText('Select a region to see what it does.')).toBeInTheDocument();
-    const button = screen.getByRole('button', { name: "Broca's area" });
+    expect(screen.getByText('Click a coloured area to see what it does.')).toBeInTheDocument();
+    const button = screen.getByRole('button', { name: 'Building speech' });
     fireEvent.click(button);
     expect(button).toHaveAttribute('aria-pressed', 'true');
-    expect(screen.getByText('Language production')).toBeInTheDocument();
+    expect(screen.getByText("Broca's area")).toBeInTheDocument();
   });
 
-  it('selects and labels a region from the 3D canvas', () => {
+  it('selects an area from the 3D canvas and names the hovered one on the stage', () => {
     render(<BrainExplorer />);
     reveal(true);
     fireEvent.click(screen.getByText('mesh-motor'));
     expect(screen.getByTestId('canvas')).toHaveAttribute('data-active', 'motor');
-    expect(screen.getByText('Voluntary movement')).toBeInTheDocument();
+    expect(screen.getByText('Primary motor cortex')).toBeInTheDocument();
     fireEvent.click(screen.getByText('hover-wernicke'));
     expect(screen.getByTestId('canvas')).toHaveAttribute('data-hovered', 'wernicke');
-    expect(screen.getAllByText("Wernicke's area (approximate)")).toHaveLength(2);
+    expect(screen.getAllByText('Understanding words')).toHaveLength(2);
   });
 
-  it('plays the speech pathway in order, shows the tract from the Broca step, then ends', () => {
+  it('plays the story: listen to each word, then plan and speak each answer word, then stop', () => {
     render(<BrainExplorer />);
     reveal(true);
     const canvas = screen.getByTestId('canvas');
-    fireEvent.click(screen.getByRole('button', { name: 'Play speech pathway' }));
-    expect(canvas).toHaveAttribute('data-active', 'auditory');
-    expect(canvas).toHaveAttribute('data-arcuate', 'false');
-    expect(screen.getByText(/^1\. Sound signals/)).toBeInTheDocument();
-    step();
-    expect(canvas).toHaveAttribute('data-active', 'wernicke');
-    expect(canvas).toHaveAttribute('data-arcuate', 'false');
-    step();
-    expect(canvas).toHaveAttribute('data-active', 'broca');
-    expect(canvas).toHaveAttribute('data-arcuate', 'true');
-    step();
-    expect(canvas).toHaveAttribute('data-active', 'motor');
-    expect(canvas).toHaveAttribute('data-arcuate', 'true');
-    step();
-    expect(canvas).not.toHaveAttribute('data-active');
-    expect(screen.getByRole('button', { name: 'Play speech pathway' })).toBeInTheDocument();
+    expect(screen.getByText(/^Press play/)).toBeInTheDocument();
+    play();
+
+    for (const word of heard) {
+      expect(canvas).toHaveAttribute('data-active', 'auditory,wernicke');
+      expect(canvas).toHaveAttribute('data-color', storyPhases.listen.color);
+      expect(canvas).toHaveAttribute('data-signal', 'false');
+      expect(screen.getByText(word).closest('li')).toHaveAttribute('data-state', 'current');
+      expect(screen.getByText(phases.listen.text)).toBeInTheDocument();
+      advance('listen');
+    }
+    for (const word of spoken) {
+      expect(canvas).toHaveAttribute('data-active', 'wernicke');
+      expect(canvas).toHaveAttribute('data-signal', 'true');
+      expect(screen.getByText(word).closest('li')).toHaveAttribute('data-state', 'planned');
+      expect(screen.getByText(phases.plan.text)).toBeInTheDocument();
+      advance('plan');
+      expect(canvas).toHaveAttribute('data-active', 'broca,motor');
+      expect(canvas).toHaveAttribute('data-color', storyPhases.speak.color);
+      expect(screen.getByText(word).closest('li')).toHaveAttribute('data-state', 'current');
+      advance('speak');
+    }
+
+    expect(canvas).toHaveAttribute('data-active', '');
+    expect(canvas).not.toHaveAttribute('data-color');
+    expect(screen.getByRole('button', { name: 'Play: hear and speak' })).toBeInTheDocument();
   });
 
-  it('stops the pathway on Stop and when a region is selected', () => {
+  it('hides the selected area while playing and stops on Stop or on a new selection', () => {
     render(<BrainExplorer />);
     reveal(true);
-    fireEvent.click(screen.getByRole('button', { name: 'Play speech pathway' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Feeling' }));
+    play();
+    expect(screen.queryByText('Primary somatosensory cortex')).not.toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Feeling' })).toHaveAttribute('aria-pressed', 'false');
     fireEvent.click(screen.getByRole('button', { name: 'Stop' }));
-    expect(screen.getByTestId('canvas')).not.toHaveAttribute('data-active');
-
-    fireEvent.click(screen.getByRole('button', { name: 'Play speech pathway' }));
-    fireEvent.click(screen.getByRole('button', { name: 'Primary somatosensory cortex' }));
-    step();
     expect(screen.getByTestId('canvas')).toHaveAttribute('data-active', 'somatosensory');
-    expect(screen.queryByText(/^1\. Sound signals/)).not.toBeInTheDocument();
+
+    play();
+    fireEvent.click(screen.getByRole('button', { name: 'Hearing' }));
+    advance('listen');
+    expect(screen.getByTestId('canvas')).toHaveAttribute('data-active', 'auditory');
+    expect(screen.getByText(/^Press play/)).toBeInTheDocument();
   });
 });
 
 describe('ResearchSection', () => {
-  it('shows the heading, the explorer, the model credit and each publication', () => {
+  it('shows the heading, the explorer, the folded sources with the model credit, and each publication', () => {
     const { container } = render(<ResearchSection />);
     expect(container.querySelector('section#research')).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Research' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Play speech pathway' })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /Anderson Winkler, CC BY-SA 3\.0/ })).toHaveAttribute(
-      'href',
-      'https://brainder.org/research/brain-for-blender/',
+    expect(screen.getByRole('button', { name: 'Play: hear and speak' })).toBeInTheDocument();
+
+    const sources = container.querySelector('details');
+    expect(sources).not.toHaveAttribute('open');
+    for (const source of brainSources) {
+      expect(sources?.querySelector(`a[href="${source.url}"]`)).toHaveTextContent(source.label);
+    }
+    expect(sources?.querySelector('a[href="https://brainder.org/research/brain-for-blender/"]')).toHaveTextContent(
+      /Anderson Winkler, CC BY-SA 3\.0/,
     );
     for (const publication of publications) {
       expect(screen.getByRole('link', { name: publication.title })).toHaveAttribute('href', publication.url);

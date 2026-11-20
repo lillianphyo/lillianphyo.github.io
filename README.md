@@ -58,7 +58,7 @@ npm run test:coverage
 
 ## Brain Explorer
 
-The Research section shows a 3D brain (`src/components/brain/`). Regions, sources and the speech pathway are data in `src/lib/brain-regions.ts`. Papers are in `src/lib/publications.ts`. Text is in `src/locales/*.json`.
+The Research section shows a 3D brain (`src/components/brain/`). Regions and sources are data in `src/lib/brain-regions.ts`. The listen, plan, speak story is in `src/lib/speech-story.ts`. Papers are in `src/lib/publications.ts`. Text is in `src/locales/*.json`.
 
 The model `public/models/brain-dk.glb` is built from the Desikan-Killiany pial meshes of [Brain for Blender](https://brainder.org/research/brain-for-blender/) by Anderson Winkler. The meshes and this derived model are licensed under [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
 

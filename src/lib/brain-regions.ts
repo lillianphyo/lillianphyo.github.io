@@ -8,7 +8,6 @@ export type BrainRegion = {
   meshes: string[];
   color: string;
   sources: RegionSource[];
-  publicationIds: string[];
 };
 
 export const brainRegions: BrainRegion[] = [
@@ -22,7 +21,6 @@ export const brainRegions: BrainRegion[] = [
         url: 'https://pubmed.ncbi.nlm.nih.gov/32119408/',
       },
     ],
-    publicationIds: [],
   },
   {
     id: 'wernicke',
@@ -38,7 +36,6 @@ export const brainRegions: BrainRegion[] = [
         url: 'https://doi.org/10.1126/science.aef8963',
       },
     ],
-    publicationIds: ['icmlsc-2026'],
   },
   {
     id: 'broca',
@@ -50,7 +47,6 @@ export const brainRegions: BrainRegion[] = [
         url: 'https://pubmed.ncbi.nlm.nih.gov/30252352/',
       },
     ],
-    publicationIds: ['icmlsc-2026'],
   },
   {
     id: 'motor',
@@ -62,7 +58,6 @@ export const brainRegions: BrainRegion[] = [
         url: 'https://pubmed.ncbi.nlm.nih.gov/31334938/',
       },
     ],
-    publicationIds: ['icmlsc-2026'],
   },
   {
     id: 'somatosensory',
@@ -74,22 +69,23 @@ export const brainRegions: BrainRegion[] = [
         url: 'https://pubmed.ncbi.nlm.nih.gov/32310375/',
       },
     ],
-    publicationIds: [],
   },
 ];
-
-export const speechPathway = ['auditory', 'wernicke', 'broca', 'motor'];
 
 export const arcuateFasciculus = {
   from: 'lh_bankssts',
   via: 'lh_supramarginal',
   to: 'lh_parsopercularis',
-  visibleFromStep: 'broca',
   source: {
-    label: 'Sierpowska et al., PNAS (2022)',
+    label: 'Sierpowska et al., Comparing human and chimpanzee temporal lobe neuroanatomy, PNAS (2022)',
     url: 'https://doi.org/10.1073/pnas.2118295119',
   },
 };
+
+export const brainSources: RegionSource[] = [
+  ...brainRegions.flatMap((region) => region.sources),
+  arcuateFasciculus.source,
+];
 
 export function findRegion(id: string | undefined) {
   return brainRegions.find((region) => region.id === id);
