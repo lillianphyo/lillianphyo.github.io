@@ -7,6 +7,7 @@ A modern, multilingual portfolio website built with Next.js, TypeScript, and sha
 - 🌍 **Multilingual Support**: English, Burmese (မြန်မာ), and Japanese (日本語)
 - 🎨 **Modern UI**: Built with shadcn/ui components and Tailwind CSS
 - 📱 **Responsive Design**: Optimized for all device sizes
+- 🧠 **Brain Explorer**: Interactive 3D brain with speech and language regions in the Research section
 - 📝 **Blog System**: Markdown-based blog with dynamic routing
 - 🚀 **GitHub Pages Ready**: Configured for easy deployment
 - ⚡ **Performance**: Built with Next.js 15 and optimized for speed
@@ -32,8 +33,8 @@ A modern, multilingual portfolio website built with Next.js, TypeScript, and sha
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/portfolio-website.git
-cd portfolio-website
+git clone https://github.com/lillianphyo/lillianphyo.github.io.git
+cd lillianphyo.github.io
 ```
 
 2. Install dependencies:
@@ -47,6 +48,25 @@ npm run dev
 ```
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Tests
+
+```bash
+npm test
+npm run test:coverage
+```
+
+## Brain Explorer
+
+The Research section shows a 3D brain (`src/components/brain/`). Regions, sources and the speech pathway are data in `src/lib/brain-regions.ts`. Papers are in `src/lib/publications.ts`. Text is in `src/locales/*.json`.
+
+The model `public/models/brain-dk.glb` is built from the Desikan-Killiany pial meshes of [Brain for Blender](https://brainder.org/research/brain-for-blender/) by Anderson Winkler. The meshes and this derived model are licensed under [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
+
+To rebuild it, download and unpack `pial_DK_obj.tar.bz2` from that page, then run:
+
+```bash
+node scripts/build-brain-model.mjs path/to/pial_DK_obj
+```
 
 ## Project Structure
 
