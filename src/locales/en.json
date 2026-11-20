@@ -2,6 +2,7 @@
   "nav": {
     "home": "Home",
     "about": "About",
+    "research": "Research",
     "projects": "Projects",
     "blog": "Blog",
     "contact": "Contact"
@@ -22,6 +23,56 @@
     "phd": "PhD in Computer Science - Saitama University (Current)",
     "senior_dev": "Senior Full Stack Developer",
     "tech_stack": "React, Node.js, TypeScript, Python, Machine Learning, Cloud Computing"
+  },
+  "research": {
+    "title": "Research",
+    "description": "I study how to decode language from non-invasive brain signals such as EEG. Explore the brain regions involved in hearing and speaking.",
+    "brain": {
+      "hint": "Drag to rotate. Scroll to zoom. Click a coloured region.",
+      "select_prompt": "Select a region to see what it does.",
+      "play": "Play speech pathway",
+      "stop": "Stop",
+      "sources": "Sources",
+      "related": "Related work",
+      "pathway_note": "A classical, simplified model of hearing and speaking.",
+      "credit": "Brain surface: Brain for Blender by Anderson Winkler, CC BY-SA 3.0. Regions follow the Desikan-Killiany atlas.",
+      "regions": {
+        "auditory": {
+          "name": "Primary auditory cortex",
+          "role": "Hearing",
+          "note": "The primary auditory area is the main cortical site that receives signals from the ear. Here it is shown as the transverse temporal region of the atlas."
+        },
+        "wernicke": {
+          "name": "Wernicke's area (approximate)",
+          "role": "Understanding speech, planning words",
+          "note": "Wernicke's area lies in the back part of the left superior temporal gyrus. The coloured atlas regions are larger than the area itself. It is known for language comprehension. A 2026 study in Science also found a subregion that becomes active before speech and codes whole upcoming words."
+        },
+        "broca": {
+          "name": "Broca's area",
+          "role": "Language production",
+          "note": "Broca's area lies in the back part of the left inferior frontal gyrus. It covers the pars opercularis and the pars triangularis, and it is vital for language."
+        },
+        "motor": {
+          "name": "Primary motor cortex",
+          "role": "Voluntary movement",
+          "note": "The precentral gyrus holds the primary motor cortex, which controls voluntary movement. Speaking is one such movement. My channel-selection study includes the left central EEG channels C5, C3 and C1, which sit over the sensorimotor region."
+        },
+        "somatosensory": {
+          "name": "Primary somatosensory cortex",
+          "role": "Touch and body sense",
+          "note": "The postcentral gyrus receives sensory information from the body, such as touch, temperature and pain."
+        }
+      },
+      "pathway": {
+        "auditory": "1. Sound signals arrive at the primary auditory cortex.",
+        "wernicke": "2. The posterior superior temporal gyrus supports the understanding of speech. A 2026 study found that part of it also plans upcoming words.",
+        "broca": "3. The arcuate fasciculus (dark line, schematic) links the posterior temporal lobe with the frontal language area.",
+        "motor": "4. The primary motor cortex drives the voluntary movements of speaking."
+      }
+    },
+    "publications": {
+      "title": "Publications"
+    }
   },
   "projects": {
     "title": "Featured Projects",
